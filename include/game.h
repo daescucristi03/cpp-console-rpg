@@ -14,14 +14,14 @@ public:
     game();
     ~game();
 
-    character setCharacter();
+    character* getPlayer() { return this->player; }
 
     character createCharacter();
     void crossRoad();
-    void findChest(character* player);
+    void findChest();
 
 private:
-    character player;
+    character *player;
 };
 
 #endif

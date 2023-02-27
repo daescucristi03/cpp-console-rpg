@@ -62,14 +62,17 @@ void game::crossRoad() {
     switch (choice) {
         case 1:
             std::cout << "You have chosen the forest path.\n";
+            game::findChest();
             // forest();
             break;
         case 2:
             std::cout << "You have chosen the village path.\n";
+            game::findChest();
             // village();
             break;
         case 3:
             std::cout << "You have chosen the cave path.\n";
+            game::findChest();
             // cave();
             break;
         default:
@@ -78,21 +81,12 @@ void game::crossRoad() {
     }
 }
 
-void game::findChest(character* player) {
+void game::findChest() {
     std::cout << "You have found a chest!\n";
 
     std::vector<item> items;
-    std::vector<item> itemList;
-    
+    std::vector<item> itemList = {item("Sword", 10, 0), item("Potion", 0, 20), item("Gold", 50, 0)}; // Example list of items
 
-    int numItems = rand() % 2 + 2; // Generate 2-3 items
-    for (int i = 0; i < numItems; i++) {
-        int itemIndex = rand() % itemList.size(); // Get a random item from the list
-        items.push_back(itemList[itemIndex]); // Add the item to the vector
-    }
-
-    for (item item : items) {
-        player->addItemToInventory(item); // Add the item to the player's inventory
-        std::cout << "You have received an item";
-    }
+    int itemIndex = rand() % itemList.size(); // Get a random item from the list
+    getPlayer()->addItemToInventory(itemList[itemIndex]); // Add the item to the player's inventory
 }
